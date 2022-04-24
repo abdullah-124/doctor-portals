@@ -18,9 +18,9 @@ const Login = () => {
   const [loginData, setLoginData] = useState({});
   const navigate = useNavigate();
 
-  // if (user.email) {
-  //   navigate(-1);
-  // }
+  if (user.email) {
+    navigate(-1);
+  }
   const handleLoginSubmit = (e) => {
     loginUser(loginData.email, loginData.password);
     e.preventDefault();

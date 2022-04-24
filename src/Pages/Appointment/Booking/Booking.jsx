@@ -6,7 +6,7 @@ const Booking = (props) => {
   const [openBooking, setOpenBooking] = React.useState(false);
   const handleBookingOpen = () => setOpenBooking(true);
   const handleBookingClose = () => setOpenBooking(false);
-  const { name, time, space } = props.booking;
+  const { name, time, space, price } = props.booking;
   const setBookingSuccess = props.setBookingSuccess
   return (
     <>
@@ -17,6 +17,7 @@ const Booking = (props) => {
           </Typography>
           <Typography variant="h6">{time}</Typography>
           <Typography variant="caption">Available space: {space}</Typography>
+          <Typography variant="h5">Price: ${price}</Typography>
           <br />
           <Button
             onClick={handleBookingOpen}

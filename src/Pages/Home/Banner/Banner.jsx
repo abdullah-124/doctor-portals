@@ -13,8 +13,7 @@ const bannerBg = {
   backgroundRepeat: "no-repeat",
 };
 const verticalCenter = {
-  display: "flex",
-  height: "450px",
+  padding: '40px 0',
   alignItems: "center",
 };
 
@@ -22,7 +21,7 @@ const Banner = () => {
   return (
     <Container style={bannerBg} sx={{ flexGrow: 1 }}>
       <Grid style={verticalCenter} container spacing={2}>
-        <Grid style={{ textAlign: "left" }} item xs={12} md={5}>
+        <Grid style={{ textAlign: "left" }} item xs={12} md={6}>
           <Typography variant="h3">Your new smaile start here</Typography>
           <Typography
             variant="h6"
@@ -36,8 +35,8 @@ const Banner = () => {
             Get Appoinment
           </Button>
         </Grid>
-        <Grid item xs={12} md={7}>
-          <img style={{ width: "400px" }} src={chair} alt="" />
+        <Grid item xs={12} md={6}>
+          <img style={{width: '100%'}} src={chair} alt="" />
         </Grid>
       </Grid>
     </Container>

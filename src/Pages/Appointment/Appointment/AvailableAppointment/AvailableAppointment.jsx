@@ -8,51 +8,64 @@ const bookings = [
     id: 1,
     name: "Teeth Orthodontics",
     time: "8:00AM - 9:00AM",
+    price: '40',
     space: "10",
   },
   {
     id: 2,
     name: "Cosmetic Dentistry",
     time: "9:00AM - 11:00AM",
+    price: '30',
     space: "8",
   },
   {
     id: 3,
     name: "Teeth Cleaning",
     time: "11:00AM - 1:00PM",
+    price: '24',
     space: "2",
   },
   {
     id: 4,
     name: "Cavity Protection",
     time: "2:00PM - 4:00PM",
+    price: '25',
     space: "6",
   },
   {
     id: 5,
     name: "Cracked teeth.",
     time: "4:00PM - 6:00PM",
+    price: '20',
     space: "5",
   },
   {
     id: 6,
     name: "Crowns",
     time: "7:00PM - 9:00PM",
+    price: '70',
     space: "4",
   },
 ];
 
 const AvailableAppointment = ({ date, setDate }) => {
-  const [bookingSuccess, setBookingSuccess] = useState(false)
+  const [bookingSuccess, setBookingSuccess] = useState(false);
   return (
     <Container>
       <h2 style={{ color: "#11d0da" }}>
         Available Appointment On {date.toDateString()}
       </h2>
-      {bookingSuccess && <Alert severity="success">Appointment added successful</Alert>}
+      {bookingSuccess && (
+        <Alert severity="success">Appointment added successful</Alert>
+      )}
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {bookings.map((booking) => (
-          <Booking key={booking.id} setBookingSuccess={setBookingSuccess} booking={booking} date={date} />
+          <Booking
+            key={booking.id}
+            setBookingSuccess={setBookingSuccess}
+            booking={booking}
+            date={date}
+          />
         ))}
       </Grid>
     </Container>

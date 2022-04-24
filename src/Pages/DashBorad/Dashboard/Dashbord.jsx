@@ -31,10 +31,16 @@ function Dashboard(props) {
     textDecoration: "none",
   };
   const drawer = (
-    <div>
+    <div style={{textAlign: 'left', padding: '5px 10px'}}>
       <Toolbar />
-      <Link to="/appointment">
+      <Link style={{textDecoration: 'none'}} to="/appointment">
         <Button>Appointment</Button>
+      </Link>
+      <Link style={{textDecoration: 'none'}} to="/">
+        <Button>Home</Button>
+      </Link>
+      <Link style={{textDecoration: 'none'}} to="/doctors">
+        <Button>Doctors</Button>
       </Link>
       <Divider />
       <List>

@@ -21,7 +21,7 @@ const style = {
 const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBookingSuccess }) => {
   const {user} = useAuth()
 
-  const { name, time } = booking;
+  const { name, time, price } = booking;
   const initialInfo = {patientName: user.displayName, email: user.email, phone: ''}
   const [bookingInfo, setBookingInfo]  = useState(initialInfo)
   // console.log(user.displayName)
@@ -42,6 +42,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
           ...bookingInfo,
           time,
           serviceName: name,
+          price: price,
           date: date.toLocaleDateString()
         }
         //send to the server
@@ -77,6 +78,9 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {name}
           </Typography>
+          <Typography  variant="caption">
+          Price: ${price}
+          </Typography>
           <form onSubmit={handleBookingSubmit}>
             <TextField
             sx={{width: '90%', m: 1}}
@@ -110,7 +114,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
               name="email"
               onBlur={handleOnBlur}
               id="outlined-size-small"
-              defaultValue={user? user.email : 'Enter Email'}
+              defaultValue={user.email? user.email : 'Enter Email'}
               size="small"
             />
             <TextField

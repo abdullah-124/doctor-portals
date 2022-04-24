@@ -7,9 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import useAuth from "../../../hooks/useAuth";
-import { Button, Typography } from "@mui/material"
+import { Link } from "react-router-dom";
+import { Button, Typography } from "@mui/material";
 
-const Appointments = ({date}) => {
+const Appointments = ({ date }) => {
   const { user } = useAuth();
   const [appintments, setAppointments] = useState([]);
   useEffect(() => {
@@ -17,18 +18,18 @@ const Appointments = ({date}) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAppointments(data));
-  }, [user,date]);
+  }, [user, date]);
   return (
     <div>
-      <Typography variant="h4">Appointments{appintments.length}</Typography >
+      <Typography variant="h4">Appointments{appintments.length}</Typography>
       <TableContainer component={Paper}>
-        <Table sx={{ }} aria-label="simple table">
+        <Table sx={{}} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell align="right">Time</TableCell>
+              <TableCell align="right">Price</TableCell>
               <TableCell align="right">Action&nbsp;(g)</TableCell>
-              
             </TableRow>
           </TableHead>
           <TableBody>
@@ -41,9 +42,16 @@ const Appointments = ({date}) => {
                   {row.patientName}
                 </TableCell>
                 <TableCell align="right">{row.time}</TableCell>
-                <TableCell align="right"><Button>Cancel</Button></TableCell>
-                
-                
+                <TableCell align="right">{row.price}</TableCell>
+                <TableCell align="right">
+                  {row.payment ? (
+                    "Paid"
+                  ) : (
+                    <Link to={`/dashboard/payment/${row._id}`}>
+                      <Button>Pay</Button>
+                    </Link>
+                  )}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

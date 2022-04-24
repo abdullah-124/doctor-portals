@@ -49,7 +49,7 @@ const useFirebase = () => {
         const newUser = { email: email, displayName: name };
         setUser(newUser);
         saveUser(email, name, "POST");
-
+        console.log(res);
         //user name update when account created
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -88,16 +88,19 @@ const useFirebase = () => {
   };
   //logout
   const logout = () => {
-    signOut(auth)
-      .then(() => {
-        setUser({});
-      })
-      .catch((err) => {
-        setMassage(err?.code);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const confirm = window.confirm("Do You Want To Logout ?");
+    if (confirm) {
+      signOut(auth)
+        .then(() => {
+          setUser({});
+        })
+        .catch((err) => {
+          setMassage(err?.code);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   };
   // state changed
   useEffect(() => {

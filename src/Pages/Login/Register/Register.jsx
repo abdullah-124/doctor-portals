@@ -13,17 +13,19 @@ import useAuth from "../../../hooks/useAuth";
 import loginImage from "../../../images/login.png";
 
 const Register = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { registerUser, user, loading, massage } = useAuth();
   const [loginData, setLoginData] = useState({});
-
+  if (user.email) {
+    navigate(-1);
+  }
   const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
     const newLoginData = { ...loginData };
     newLoginData[field] = value;
     setLoginData(newLoginData);
-    console.log(newLoginData)
+    console.log(newLoginData);
   };
   const handleLoginSubmit = (e) => {
     if (loginData.password.length < 5) {
@@ -35,9 +37,7 @@ const Register = () => {
       console.log(user);
     }
     registerUser(loginData.email, loginData.password, loginData.name);
-    if(user.email){
-      navigate(-1)
-    }
+
     e.preventDefault();
   };
   return loading ? (

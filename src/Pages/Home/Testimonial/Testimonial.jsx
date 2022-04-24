@@ -36,11 +36,11 @@ const Testimonial = () => {
       >
         Testimonial
       </Typography>
-      <Typography variant="h2" sx={{ fontWeight: "400" }}>
+      <Typography variant="h5" sx={{ fontWeight: "400" ,textAlign: 'center' }}>
         What's Our Patients <br /> Says
       </Typography>
       <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container spacing={{ xs: 1, md: 3 }} columns={{ xs: 1, sm: 8, md: 12 }}>
           {
               reviews.map(review => <ReviewCard key={review.photo} review={review} />)
           }
